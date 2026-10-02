@@ -1,0 +1,31 @@
+{
+  "$schema": "https://openapi.vercel.sh/vercel.json",
+  "services": {
+    "app": {
+      "root": ".",
+      "runtime": "go"
+    },
+    "admin": {
+      "root": "frontend/admin",
+      "framework": "vite"
+    },
+    "user": {
+      "root": "frontend/user",
+      "framework": "vite"
+    }
+  },
+  "rewrites": [
+    {
+      "source": "/admin/(.*)",
+      "destination": {
+        "service": "admin"
+      }
+    },
+    {
+      "source": "/(.*)",
+      "destination": {
+        "service": "app"
+      }
+    }
+  ]
+}
